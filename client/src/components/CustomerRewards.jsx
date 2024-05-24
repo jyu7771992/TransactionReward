@@ -1,57 +1,78 @@
+// src/components/CustomerRewards.jsx
+
 import React from 'react';
+import useFetch from '../hooks/useFetch';
+import { getTransactions, getCustomers } from '../api/api';
+import TransactionTable from './TransactionTable';
 
-const CustomerRewards = ({ customers, rewards }) => {
-  const customerMap = new Map();
-  const cusLen = customers.length;
-  if (cusLen === 0) return 'no data for this customers';
+const calculatePoints = (amount) => {
+  let points = 0;
+  if (amount > 50 && amount <= 100) {
+    points = amount - 50;
+  } else if (amount > 100) {
+    points = 2 * (amount - 100) + 50;
+  }
+  return points;
+};
 
-  //create a map of customerId for looking up easier
-  for (let idx = 0; idx < cusLen; idx++) {
-    if (!customers.has(customers.id)) {
-      customerMap.set(customers.id, customers.name);
-    } else {
-      console.log('dulicate info exist');
+const calculateRewards = (transactions) => {
+  const rewardsByCustomerAndMonth = {};
+
+  transactions.forEach((transaction) => {
+    const customerId = transaction.customerId;
+    const date = new Date(transaction.timestamp);
+    const month =
+      date.toLocaleString('default', { month: 'long' }) +
+      ' ' +
+      date.getFullYear();
+    const amount = transaction.amount;
+
+    if (!rewardsByCustomerAndMonth[customerId]) {
+      rewardsByCustomerAndMonth[customerId] = {};
     }
+
+    if (!rewardsByCustomerAndMonth[customerId][month]) {
+      rewardsByCustomerAndMonth[customerId][month] = {
+        points: 0,
+        transactions: [],
+      };
+    }
+
+    rewardsByCustomerAndMonth[customerId][month].points +=
+      calculatePoints(amount);
+    rewardsByCustomerAndMonth[customerId][month].transactions.push(transaction);
+  });
+
+  return rewardsByCustomerAndMonth;
+};
+
+const CustomerRewards = ({ customerId }) => {
+  const { data: transactions, loading: transactionsLoading } =
+    useFetch(getTransactions);
+  const { data: customers, loading: customersLoading } = useFetch(getCustomers);
+
+  if (transactionsLoading || customersLoading) {
+    return <div>Loading...</div>;
   }
 
-  //create a map of customerId for checking their rewards by month
-  const customerRewards = new Map();
-  rewards.forEach((reward) => {
-    if (!customerRewards.has(reward.customerId)) {
-      customerRewards.set(reward.customerId, []);
-    }
-    const rewardsByMonth = customerRewards.get(reward.customerId);
-    rewardsByMonth.push({ month: reward.month, points: reward.points });
-  });
+  const customer = customers.find((c) => c.id === customerId);
+  const rewards = calculateRewards(transactions);
+  console.log(transactions);
+
+  if (!customer) {
+    return <div>Customer not found</div>;
+  }
 
   return (
     <div>
-      <h2>Rewards Summary</h2>
-      {customers.map((customer) => (
-        <div key={customer.id} style={{ marginBottom: '20px' }}>
-          <h3>{customer.name}</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Month</th>
-                <th>Points</th>
-              </tr>
-            </thead>
-            <tbody>
-              {customerRewards[customer.id] ? (
-                customerRewards[customer.id].map((reward) => (
-                  <tr key={reward.month}>
-                    <td>{reward.month}</td>
-                    <td>{reward.points}</td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan='2'>No rewards data available</td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+      <h2>{customer.name}</h2>
+      {Object.keys(rewards[customerId] || {}).map((month) => (
+        <div key={month}>
+          <h3>{month}</h3>
+          <p>Total Points: {rewards[customerId][month].points}</p>
+          <TransactionTable
+            transactions={rewards[customerId][month].transactions}
+          />
         </div>
       ))}
     </div>

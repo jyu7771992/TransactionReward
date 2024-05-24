@@ -1,28 +1,30 @@
 import React, { useState, useEffect } from 'react';
+// import CustomerRewardList from './components/CustomerRewardList';
 import CustomerRewards from './components/CustomerRewards';
-import { getCustomers, getRewards } from './api/api';
-
+import { getCustomers } from './api/api';
 const App = () => {
-  const [customers, setCustomers] = useState([]);
-  const [rewards, setRewards] = useState([]);
+  const [customer, setCustomer] = useState(null);
+  const customerId = '1'; // Assuming we're checking rewards for customer with ID '1'
 
   useEffect(() => {
-    const fetchData = async () => {
-      const customersData = await getCustomers();
-      console.log(customersData);
-      setCustomers(customersData);
-
-      const rewardsData = await getRewards();
-      setRewards(rewardsData);
+    const fetchCustomer = async () => {
+      const customers = await getCustomers();
+      const specificCustomer = customers.find((cust) => cust.id === customerId);
+      setCustomer(specificCustomer);
     };
 
-    fetchData();
-  }, []);
+    fetchCustomer();
+  }, [customerId]);
 
   return (
     <div>
-      <h1>Customer Rewards</h1>
-      <CustomerRewards customers={customers} rewards={rewards} />
+      {customer ? (
+        <h1>Welcome to Your Customer Rewards, {customer.name}</h1>
+      ) : (
+        <div>Loading...</div>
+      )}
+      {/* <CustomerRewardList customerId={customerId} /> */}
+      <CustomerRewards customerId={customerId} />
     </div>
   );
 };

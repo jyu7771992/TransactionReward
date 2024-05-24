@@ -1,0 +1,243 @@
+{
+  "customers": [
+    {
+      "id": "1",
+      "name": "Alice Johnson",
+      "email": "alice.johnson@example.com"
+    },
+    { "id": "2", "name": "Bob Smith", "email": "bob.smith@example.com" },
+    {
+      "id": "3",
+      "name": "Charlie Brown",
+      "email": "charlie.brown@example.com"
+    },
+    { "id": "4", "name": "Diana Prince", "email": "diana.prince@example.com" },
+    {
+      "id": "5",
+      "name": "Evan Williams",
+      "email": "evan.williams@example.com"
+    },
+    { "id": "6", "name": "Fiona Davis", "email": "fiona.davis@example.com" },
+    {
+      "id": "7",
+      "name": "George Miller",
+      "email": "george.miller@example.com"
+    },
+    {
+      "id": "8",
+      "name": "Hannah Wilson",
+      "email": "hannah.wilson@example.com"
+    },
+    { "id": "9", "name": "Ian Clark", "email": "ian.clark@example.com" },
+    { "id": "10", "name": "Jasmine Lee", "email": "jasmine.lee@example.com" },
+    {
+      "id": "11",
+      "name": "Kevin Martinez",
+      "email": "kevin.martinez@example.com"
+    },
+    {
+      "id": "12",
+      "name": "Laura Hernandez",
+      "email": "laura.hernandez@example.com"
+    },
+    { "id": "13", "name": "Martin Lopez", "email": "martin.lopez@example.com" },
+    {
+      "id": "14",
+      "name": "Nina Gonzalez",
+      "email": "nina.gonzalez@example.com"
+    },
+    { "id": "15", "name": "Oscar Perez", "email": "oscar.perez@example.com" },
+    { "id": "16", "name": "Paula Turner", "email": "paula.turner@example.com" },
+    {
+      "id": "17",
+      "name": "Quincy Edwards",
+      "email": "quincy.edwards@example.com"
+    },
+    {
+      "id": "18",
+      "name": "Rachel Collins",
+      "email": "rachel.collins@example.com"
+    },
+    {
+      "id": "19",
+      "name": "Steve Stewart",
+      "email": "steve.stewart@example.com"
+    },
+    { "id": "20", "name": "Tina Russell", "email": "tina.russell@example.com" },
+    {
+      "id": "21",
+      "name": "Ursula Fisher",
+      "email": "ursula.fisher@example.com"
+    },
+    {
+      "id": "22",
+      "name": "Victor Simmons",
+      "email": "victor.simmons@example.com"
+    },
+    { "id": "23", "name": "Wendy Morgan", "email": "wendy.morgan@example.com" },
+    { "id": "24", "name": "Xander Cruz", "email": "xander.cruz@example.com" },
+    { "id": "25", "name": "Yvonne Reed", "email": "yvonne.reed@example.com" },
+    {
+      "id": "26",
+      "name": "Zachary Patterson",
+      "email": "zachary.patterson@example.com"
+    },
+    { "id": "27", "name": "Amber Brooks", "email": "amber.brooks@example.com" },
+    { "id": "28", "name": "Brian Foster", "email": "brian.foster@example.com" },
+    {
+      "id": "29",
+      "name": "Catherine Sanders",
+      "email": "catherine.sanders@example.com"
+    },
+    { "id": "30", "name": "David Morris", "email": "david.morris@example.com" },
+    { "id": "31", "name": "Ella Rogers", "email": "ella.rogers@example.com" },
+    { "id": "32", "name": "Frank Powell", "email": "frank.powell@example.com" },
+    { "id": "33", "name": "Grace Long", "email": "grace.long@example.com" },
+    { "id": "34", "name": "Harry Reed", "email": "harry.reed@example.com" },
+    { "id": "35", "name": "Isla Murphy", "email": "isla.murphy@example.com" },
+    { "id": "36", "name": "Jack Bell", "email": "jack.bell@example.com" },
+    { "id": "37", "name": "Kathy Cooper", "email": "kathy.cooper@example.com" },
+    {
+      "id": "38",
+      "name": "Liam Richardson",
+      "email": "liam.richardson@example.com"
+    },
+    { "id": "39", "name": "Maya Cox", "email": "maya.cox@example.com" },
+    { "id": "40", "name": "Noah Howard", "email": "noah.howard@example.com" },
+    { "id": "41", "name": "Olivia Ward", "email": "olivia.ward@example.com" },
+    { "id": "42", "name": "Paul Baker", "email": "paul.baker@example.com" },
+    { "id": "43", "name": "Quinn Bryant", "email": "quinn.bryant@example.com" },
+    { "id": "44", "name": "Ruby Bailey", "email": "ruby.bailey@example.com" },
+    {
+      "id": "45",
+      "name": "Samuel Watson",
+      "email": "samuel.watson@example.com"
+    },
+    { "id": "46", "name": "Taylor James", "email": "taylor.james@example.com" },
+    { "id": "47", "name": "Uma Harrison", "email": "uma.harrison@example.com" },
+    {
+      "id": "48",
+      "name": "Victor Brooks",
+      "email": "victor.brooks@example.com"
+    },
+    {
+      "id": "49",
+      "name": "Willow Cooper",
+      "email": "willow.cooper@example.com"
+    },
+    { "id": "50", "name": "Xena Turner", "email": "xena.turner@example.com" }
+  ],
+  "transactions": [
+    { "id": "7", "customerId": "3", "timestamp": 1714560000000, "amount": 100 },
+    { "id": "8", "customerId": "3", "timestamp": 1713024000000, "amount": 40 },
+    { "id": "9", "customerId": "3", "timestamp": 1711382400000, "amount": 70 },
+    {
+      "id": "10",
+      "customerId": "4",
+      "timestamp": 1714560000000,
+      "amount": 200
+    },
+    { "id": "11", "customerId": "4", "timestamp": 1713024000000, "amount": 90 },
+    { "id": "12", "customerId": "4", "timestamp": 1711382400000, "amount": 55 },
+    { "id": "13", "customerId": "5", "timestamp": 1714560000000, "amount": 75 },
+    {
+      "id": "14",
+      "customerId": "5",
+      "timestamp": 1713024000000,
+      "amount": 110
+    },
+    { "id": "15", "customerId": "5", "timestamp": 1711382400000, "amount": 65 },
+    {
+      "id": "16",
+      "customerId": "6",
+      "timestamp": 1714560000000,
+      "amount": 120
+    },
+    { "id": "17", "customerId": "6", "timestamp": 1713024000000, "amount": 80 },
+    { "id": "18", "customerId": "6", "timestamp": 1711382400000, "amount": 35 },
+    { "id": "19", "customerId": "7", "timestamp": 1714560000000, "amount": 95 },
+    { "id": "20", "customerId": "7", "timestamp": 1713024000000, "amount": 50 },
+    { "id": "21", "customerId": "7", "timestamp": 1711382400000, "amount": 75 },
+    {
+      "id": "22",
+      "customerId": "8",
+      "timestamp": 1714560000000,
+      "amount": 150
+    },
+    { "id": "23", "customerId": "8", "timestamp": 1713024000000, "amount": 65 },
+    { "id": "24", "customerId": "8", "timestamp": 1711382400000, "amount": 40 },
+    {
+      "id": "25",
+      "customerId": "9",
+      "timestamp": 1714560000000,
+      "amount": 180
+    },
+    { "id": "26", "customerId": "9", "timestamp": 1713024000000, "amount": 95 },
+    { "id": "27", "customerId": "9", "timestamp": 1711382400000, "amount": 50 },
+    {
+      "id": "28",
+      "customerId": "10",
+      "timestamp": 1714560000000,
+      "amount": 130
+    },
+    {
+      "id": "29",
+      "customerId": "10",
+      "timestamp": 1713024000000,
+      "amount": 70
+    },
+    { "id": "30", "customerId": "10", "timestamp": 1711382400000, "amount": 25 }
+  ],
+  "rewards": [
+    { "id": "1", "customerId": "1", "month": "May 2024", "points": 90 },
+    { "id": "2", "customerId": "1", "month": "April 2024", "points": 35 },
+    { "id": "3", "customerId": "1", "month": "March 2024", "points": 0 },
+    { "id": "4", "customerId": "2", "month": "May 2024", "points": 100 },
+    { "id": "5", "customerId": "2", "month": "April 2024", "points": 10 },
+    { "id": "6", "customerId": "2", "month": "March 2024", "points": 0 },
+    { "id": "7", "customerId": "3", "month": "May 2024", "points": 100 },
+    { "id": "8", "customerId": "3", "month": "April 2024", "points": 40 },
+    { "id": "9", "customerId": "3", "month": "March 2024", "points": 70 },
+    { "id": "10", "customerId": "4", "month": "May 2024", "points": 200 },
+    { "id": "11", "customerId": "4", "month": "April 2024", "points": 90 },
+    { "id": "12", "customerId": "4", "month": "March 2024", "points": 55 },
+    { "id": "13", "customerId": "5", "month": "May 2024", "points": 75 },
+    { "id": "14", "customerId": "5", "month": "April 2024", "points": 110 },
+    { "id": "15", "customerId": "5", "month": "March 2024", "points": 65 },
+    { "id": "16", "customerId": "6", "month": "May 2024", "points": 120 },
+    { "id": "17", "customerId": "6", "month": "April 2024", "points": 80 },
+    { "id": "18", "customerId": "6", "month": "March 2024", "points": 35 },
+    { "id": "19", "customerId": "7", "month": "May 2024", "points": 95 },
+    { "id": "20", "customerId": "7", "month": "April 2024", "points": 50 },
+    { "id": "21", "customerId": "7", "month": "March 2024", "points": 75 },
+    { "id": "22", "customerId": "8", "month": "May 2024", "points": 150 },
+    { "id": "23", "customerId": "8", "month": "April 2024", "points": 65 },
+    { "id": "24", "customerId": "8", "month": "March 2024", "points": 40 },
+    { "id": "25", "customerId": "9", "month": "May 2024", "points": 180 },
+    { "id": "26", "customerId": "9", "month": "April 2024", "points": 95 },
+    { "id": "27", "customerId": "9", "month": "March 2024", "points": 50 },
+    { "id": "28", "customerId": "10", "month": "May 2024", "points": 130 },
+    { "id": "29", "customerId": "10", "month": "April 2024", "points": 70 },
+    { "id": "30", "customerId": "10", "month": "March 2024", "points": 25 },
+    { "id": "31", "customerId": "11", "month": "May 2024", "points": 115 },
+    { "id": "32", "customerId": "11", "month": "April 2024", "points": 55 },
+    { "id": "33", "customerId": "11", "month": "March 2024", "points": 30 },
+    { "id": "34", "customerId": "12", "month": "May 2024", "points": 85 },
+    { "id": "35", "customerId": "12", "month": "April 2024", "points": 75 },
+    { "id": "36", "customerId": "12", "month": "March 2024", "points": 25 },
+    { "id": "37", "customerId": "13", "month": "May 2024", "points": 110 },
+    { "id": "38", "customerId": "13", "month": "April 2024", "points": 50 },
+    { "id": "39", "customerId": "13", "month": "March 2024", "points": 40 },
+    { "id": "40", "customerId": "14", "month": "May 2024", "points": 125 },
+    { "id": "41", "customerId": "14", "month": "April 2024", "points": 60 },
+    { "id": "42", "customerId": "14", "month": "March 2024", "points": 30 },
+    { "id": "43", "customerId": "15", "month": "May 2024", "points": 105 },
+    { "id": "44", "customerId": "15", "month": "April 2024", "points": 75 },
+    { "id": "45", "customerId": "15", "month": "March 2024", "points": 55 },
+    { "id": "46", "customerId": "16", "month": "May 2024", "points": 95 },
+    { "id": "47", "customerId": "16", "month": "April 2024", "points": 65 },
+    { "id": "48", "customerId": "16", "month": "March 2024", "points": 45 },
+    { "id": "49", "customerId": "17", "month": "May 2024", "points": 115 },
+    { "id": "50", "customerId": "17", "month": "April 2024", "points": 55 }
+  ]
+}
