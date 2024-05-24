@@ -16,7 +16,6 @@ const calculatePoints = (amount) => {
 
 const calculateRewards = (transactions) => {
   const rewardsByCustomerAndMonth = {};
-
   transactions.forEach((transaction) => {
     const customerId = transaction.customerId;
     const date = new Date(transaction.timestamp);

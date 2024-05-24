@@ -1,5 +1,5 @@
-import './TransactionTable.css';
 import React from 'react';
+import './TransactionTable.css';
 
 const calculatePoints = (amount) => {
   let points = 0;
@@ -23,7 +23,7 @@ const TransactionTable = ({ transactions }) => {
       </thead>
       <tbody>
         {transactions.map((transaction) => (
-          <tr key={transaction.id}>
+          <tr key={transaction.id} className='table-tr'>
             <td>{new Date(transaction.timestamp).toLocaleDateString()}</td>
             <td>${transaction.amount.toFixed(2)}</td>
             <td>{calculatePoints(transaction.amount)}</td>
