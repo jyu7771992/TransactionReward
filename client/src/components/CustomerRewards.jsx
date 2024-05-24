@@ -1,9 +1,8 @@
-// src/components/CustomerRewards.jsx
-
 import React from 'react';
 import useFetch from '../hooks/useFetch';
 import { getTransactions, getCustomers } from '../api/api';
 import TransactionTable from './TransactionTable';
+import './CustomerRewards.css';
 
 const calculatePoints = (amount) => {
   let points = 0;
@@ -57,7 +56,6 @@ const CustomerRewards = ({ customerId }) => {
 
   const customer = customers.find((c) => c.id === customerId);
   const rewards = calculateRewards(transactions);
-  console.log(transactions);
 
   if (!customer) {
     return <div>Customer not found</div>;
@@ -65,16 +63,24 @@ const CustomerRewards = ({ customerId }) => {
 
   return (
     <div>
-      <h2>{customer.name}</h2>
-      {Object.keys(rewards[customerId] || {}).map((month) => (
-        <div key={month}>
-          <h3>{month}</h3>
-          <p>Total Points: {rewards[customerId][month].points}</p>
-          <TransactionTable
-            transactions={rewards[customerId][month].transactions}
-          />
+      {rewards[customerId] === undefined || rewards[customerId].length ? (
+        <div>
+          There is no data for your rewards since you don't have any
+          transactions.
         </div>
-      ))}
+      ) : (
+        Object.keys(rewards[customerId] || {}).map((month) => (
+          <div key={month} className='group-month-container'>
+            <h2 className='group-month-title'>{month}</h2>
+            <p className='group-month-total'>
+              Total Points: {rewards[customerId][month].points}
+            </p>
+            <TransactionTable
+              transactions={rewards[customerId][month].transactions}
+            />
+          </div>
+        ))
+      )}
     </div>
   );
 };

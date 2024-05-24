@@ -1,4 +1,12 @@
+# Getting Started with running server
+
+open your termninal to TransactionReward directory
+
+### `json-server --watch db.json --port 3031`
+
 # Getting Started with Create React App
+
+### `cd client`
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

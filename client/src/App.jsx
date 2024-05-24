@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-// import CustomerRewardList from './components/CustomerRewardList';
 import CustomerRewards from './components/CustomerRewards';
 import { getCustomers } from './api/api';
+import './App.css';
 const App = () => {
   const [customer, setCustomer] = useState(null);
   const customerId = '1'; // Assuming we're checking rewards for customer with ID '1'
@@ -17,13 +17,14 @@ const App = () => {
   }, [customerId]);
 
   return (
-    <div>
+    <div className='rewards-container'>
       {customer ? (
-        <h1>Welcome to Your Customer Rewards, {customer.name}</h1>
+        <h1 className='rewards-greeting'>
+          Welcome to Your Customer Rewards, {customer.name}
+        </h1>
       ) : (
         <div>Loading...</div>
       )}
-      {/* <CustomerRewardList customerId={customerId} /> */}
       <CustomerRewards customerId={customerId} />
     </div>
   );

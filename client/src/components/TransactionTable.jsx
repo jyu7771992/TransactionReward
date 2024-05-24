@@ -1,5 +1,4 @@
-// src/components/TransactionsTable.jsx
-
+import './TransactionTable.css';
 import React from 'react';
 
 const calculatePoints = (amount) => {
@@ -14,7 +13,7 @@ const calculatePoints = (amount) => {
 
 const TransactionTable = ({ transactions }) => {
   return (
-    <table>
+    <table className='user-table'>
       <thead>
         <tr>
           <th>Date</th>

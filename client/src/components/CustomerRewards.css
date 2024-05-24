@@ -1,0 +1,22 @@
+.group-month-container {
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.04);
+  margin: 0px;
+  margin-top: 20px;
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+.group-month-title {
+  margin: 0px;
+  padding: 15px 5px;
+  background-color: royalblue;
+  color: white;
+  font-size: 15px;
+}
+.group-month-total {
+  font-weight: 600;
+  color: royalblue;
+  font-size: 1.1rem;
+  border-bottom: 1px dashed royalblue;
+  padding-bottom: 10px;
+}
