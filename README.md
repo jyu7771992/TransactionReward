@@ -1,74 +1,150 @@
-# Getting Started with the server
+# Rewards Program Dashboard
+
+A React application to simulate a retailer's rewards program. Customers earn points based on their transactions, which are calculated and displayed for each month. This project includes a mock backend using `json-server` and unit tests with Jest.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [API](#api)
+- [Features](#features)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Installation
+
+Clone the repository and install the dependencies:
+
+```bash
+git clone https://github.com/yourusername/rewards-program-dashboard.git
+cd rewards-program-dashboard
+npm install
+```
+
+## Set up json-server:
+
+npm install -g json-server
+
+# Usage
+
+## Start the JSON server:
 
 json-server --watch db.json --port 3031
 
-# Getting Started with Create React App
+## Start the React application:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+npm start
 
-## Available Scripts
+Open your browser and navigate to http://localhost:3000.
 
-In the project directory, you can run:
+# API
 
-### `npm start`
+## Mock API Endpoints
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- GET /customers: Retrieve the list of customers.
+- GET /transactions: Retrieve the list of transactions.
+- GET /rewards: Retrieve the list of rewards.
+- GET /rewards?customerId=:id: Retrieve rewards for a specific customer.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Data Structure
 
-### `npm test`
+## Customers
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+{
+  "customers": [
+    {
+      "id": "1",
+      "name": "Alice Johnson",
+      "email": "alice.johnson@example.com"
+    },
+    ...
+  ]
+}
+```
 
-### `npm run build`
+## Transactions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+{
+  "transactions": [
+    { "id": "1", "customerId": "1", "timestamp": 1714560000000, "amount": 120 },
+    ...
+  ]
+}
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Rewards
 
-### `npm run eject`
+```
+{
+"rewards": [
+{ "id": "1", "customerId": "1", "month": "May 2024", "points": 90 },
+...
+]}
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Features
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Customer List: Display a list of customers.
+- Monthly Rewards: Calculate and display monthly rewards for each customer.
+- Transactions: View transactions and points calculation logic.
+- Filtering: Filter transactions and rewards by month and amount.
+- Responsive Design: Mobile-friendly interface.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Testing
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Unit tests are written using Jest. To run the tests:
 
-## Learn More
+```
+npm test
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Ensure you have set up Jest properly by installing necessary packages:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+npm install --save-dev jest babel-jest @babel/preset-env @babel/preset-react react-test-renderer
 
-### Code Splitting
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Jest Configuration
 
-### Analyzing the Bundle Size
+Add the following to your package.json:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+"jest": {
+  "moduleFileExtensions": ["js", "jsx"],
+  "transform": {
+    "^.+\\.jsx?$": "babel-jest"
+  },
+  "testEnvironment": "jsdom",
+  "setupFilesAfterEnv": ["<rootDir>/src/setupTests.js"]
+}
+```
 
-### Making a Progressive Web App
+Create a babel.config.js file:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+module.exports = {
+  presets: ['@babel/preset-env', '@babel/preset-react'],
+};
 
-### Advanced Configuration
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# Contributing
 
-### Deployment
+- Fork the repository
+- Create your feature branch (git checkout -b feature/AmazingFeature)
+- Commit your changes (git commit -m 'Add some AmazingFeature')
+- Push to the branch (git push origin feature/AmazingFeature)
+- Open a Pull Request
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# License
 
-### `npm run build` fails to minify
+Distributed under the MIT License. See LICENSE for more information.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+This markdown file can be opened and edited in VS Code and will render nicely on GitHub. Adjust the GitHub URL and other specifics according to your actual project details.
+```
