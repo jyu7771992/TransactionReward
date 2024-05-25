@@ -2,18 +2,18 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import CustomerRewards from '../CustomerRewards';
 
-jest.mock('../api/api', () => ({
-  getTransactions: jest.fn().mockResolvedValue([
-    { id: '1', customerId: '1', timestamp: 1714560000000, amount: 120 },
-    { id: '2', customerId: '1', timestamp: 1713024000000, amount: 85 },
-    { id: '3', customerId: '1', timestamp: 1711382400000, amount: 45 },
-  ]),
-  getCustomers: jest
-    .fn()
-    .mockResolvedValue([
-      { id: '1', name: 'Alice Johnson', email: 'alice.johnson@example.com' },
-    ]),
-}));
+// jest.mock('../../api/api.js', () => ({
+//   getTransactions: jest.fn().mockResolvedValue([
+//     { id: '1', customerId: '1', timestamp: 1714560000000, amount: 120 },
+//     { id: '2', customerId: '1', timestamp: 1713024000000, amount: 85 },
+//     { id: '3', customerId: '1', timestamp: 1711382400000, amount: 45 },
+//   ]),
+//   getCustomers: jest
+//     .fn()
+//     .mockResolvedValue([
+//       { id: '1', name: 'Alice Johnson', email: 'alice.johnson@example.com' },
+//     ]),
+// }));
 
 describe('CustomerRewards', () => {
   it('renders customer rewards correctly', async () => {
