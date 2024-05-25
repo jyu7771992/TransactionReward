@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import TransactionTable from '../TransactionsTable';
+import TransactionTable from '../TransactionTable';
 import { calculatePoints } from '../TransactionsTable';
 
 describe('calculatePoints', () => {

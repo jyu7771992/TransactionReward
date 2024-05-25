@@ -2,7 +2,7 @@ import React from 'react';
 
 const RewardsTable = ({ month, transactions, rewards }) => {
   return (
-    <div style={{ marginBottom: '20px' }}>
+    <div>
       <h4>{month}</h4>
       <table>
         <thead>
