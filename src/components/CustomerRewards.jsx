@@ -24,7 +24,7 @@ const CustomerRewards = ({ customerId }) => {
   return (
     <div data-testid={`rewards-container-${customerId}`}>
       {rewards[customerId] === undefined || rewards[customerId].length ? (
-        <div className='empy-data'>
+        <div className='empty-data'>
           There is no data for your rewards since you don't have any
           transactions.
         </div>

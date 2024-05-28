@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, within } from '@testing-library/react';
-import TransactionTable from '../TransactionTable';
+import TransactionTable from '../../components/TransactionTable';
 
 const mockTransactions = [
   { id: '1', timestamp: 1714560000000, amount: 120 },
