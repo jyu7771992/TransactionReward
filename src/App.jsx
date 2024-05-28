@@ -18,13 +18,10 @@ const App = () => {
 
   return (
     <div className='rewards-container'>
-      {customer ? (
-        <h1 className='rewards-greeting'>
-          Welcome to Your Customer Rewards, {customer.name}
-        </h1>
-      ) : (
-        <div>Loading...</div>
-      )}
+      <h1 className='rewards-greeting'>
+        Welcome to Your Customer Rewards,{' '}
+        {customer ? `${customer.name}` : 'please hold on for couple secs'}
+      </h1>
       <CustomerRewards customerId={customerId} />
     </div>
   );
