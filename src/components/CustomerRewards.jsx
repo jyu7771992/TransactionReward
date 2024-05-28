@@ -29,8 +29,12 @@ const CustomerRewards = ({ customerId }) => {
           transactions.
         </div>
       ) : (
-        Object.keys(rewards[customerId] || {}).map((month) => (
-          <div key={month} className='group-month-container'>
+        Object.keys(rewards[customerId] || {}).map((month, index) => (
+          <div
+            key={month}
+            className='group-month-container'
+            data-testid={`group-container-${index}`}
+          >
             <h2 className='group-month-title'>{month}</h2>
             <p className='group-month-total'>
               Total Points: {rewards[customerId][month].points}
