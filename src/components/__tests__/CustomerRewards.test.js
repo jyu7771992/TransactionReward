@@ -47,7 +47,6 @@ describe('CustomerRewards', () => {
     const customerRewardsEle = await screen.findByTestId(
       `rewards-container-${customerId}`
     );
-
     expect(customerRewardsEle).toBeInTheDocument();
   });
 
@@ -59,39 +58,36 @@ describe('CustomerRewards', () => {
     const customerRewardsEle = await screen.findByTestId(
       `rewards-container-${customerId}`
     );
-
     expect(customerRewardsEle).toBeInTheDocument();
-    const valEl = screen.getByTestId(`empty-data-${customerId}`);
-    expect(valEl).toBeInTheDocument();
-    expect(valEl).toHaveTextContent(
+
+    const emptyDataMessage = screen.getByTestId(`empty-data-${customerId}`);
+    expect(emptyDataMessage).toBeInTheDocument();
+    expect(emptyDataMessage).toHaveTextContent(
       "There is no data for your rewards since you don't have any transactions."
     );
   });
+
+  const checkMonthGroup = async (index, month, year, totalPoints) => {
+    const groupContainer = await screen.findByTestId(
+      `group-container-${index}`
+    );
+    expect(groupContainer).toBeInTheDocument();
+
+    const monthTitle = screen.getByTestId(`group-month-title-${index}`);
+    expect(monthTitle).toHaveTextContent(`${month} ${year}`);
+
+    const monthTotal = screen.getByTestId(`group-month-total-${index}`);
+    expect(monthTotal).toHaveTextContent(`Total Points: ${totalPoints}`);
+  };
 
   test('should render rewards for each month', async () => {
     const customerId = '1';
     render(<CustomerRewards customerId={customerId} />);
 
-    await waitFor(() => {
-      const mayTableEle = screen.getByTestId(`group-container-0`);
-      const aprilTableEle = screen.getByTestId(`group-container-1`);
-      const marchTableEle = screen.getByTestId(`group-container-2`);
-      expect(mayTableEle).toBeInTheDocument();
-      expect(aprilTableEle).toBeInTheDocument();
-      expect(marchTableEle).toBeInTheDocument();
-      const mayTitle = screen.getByTestId(`group-month-title-0`);
-      const aprilTitle = screen.getByTestId(`group-month-title-1`);
-      const marchTitle = screen.getByTestId(`group-month-title-2`);
-      expect(mayTitle).toHaveTextContent('May 2024');
-      expect(aprilTitle).toHaveTextContent('April 2024');
-      expect(marchTitle).toHaveTextContent('March 2024');
-
-      const mayTotal = screen.getByTestId(`group-month-total-0`);
-      const aprilTotal = screen.getByTestId(`group-month-total-1`);
-      const marchTotal = screen.getByTestId(`group-month-total-2`);
-      expect(mayTotal).toHaveTextContent('Total Points: 90');
-      expect(aprilTotal).toHaveTextContent('Total Points: 35');
-      expect(marchTotal).toHaveTextContent('Total Points: 0');
+    await waitFor(async () => {
+      await checkMonthGroup(0, 'May', 2024, 90);
+      await checkMonthGroup(1, 'April', 2024, 35);
+      await checkMonthGroup(2, 'March', 2024, 0);
     });
   });
 });
