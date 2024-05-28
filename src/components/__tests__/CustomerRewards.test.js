@@ -1,6 +1,7 @@
 // customerReward.test.js
-import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import React, { act } from 'react';
+import ReactDOM from 'react-dom';
+import { render, screen, cleanup } from '@testing-library/react';
 import CustomerRewards from '../CustomerRewards';
 import * as api from '../../api/api';
 
@@ -23,7 +24,28 @@ describe('CustomerRewards', () => {
     api.getTransactions.mockResolvedValue(mockRewards);
   });
 
-  test('renders customer name', async () => {
-    render(<CustomerRewards customerId='1' />);
+  afterEach(() => {
+    cleanup();
+  });
+
+  test('should render customer rewards components', async () => {
+    const customerId = '1';
+    // ARRANGE
+    act(() => {
+      render(<CustomerRewards customerId={customerId} />);
+    });
+
+    const customerRewardsEle = screen.getByTestId(
+      `rewards-container-${customerId}`
+    );
+
+    expect(customerRewardsEle).toBeInTheDocument();
+
+    const valEl = customerRewardsEle.querySelector('.empty-data');
+    if (valEl !== null || valEl !== undefined) {
+      expect(valEl).toHaveTextContent(
+        'There is no data for your rewards since you do not have any transactions'
+      );
+    }
   });
 });

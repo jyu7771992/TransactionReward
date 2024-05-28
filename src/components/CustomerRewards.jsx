@@ -3,37 +3,7 @@ import useFetch from '../hooks/useFetch';
 import { getTransactions, getCustomers } from '../api/api';
 import TransactionTable from './TransactionTable';
 import './CustomerRewards.css';
-import { calculatePoints } from '../utils/calculatePointsUtil';
-
-const calculateRewards = (transactions) => {
-  const rewardsByCustomerAndMonth = {};
-  transactions.forEach((transaction) => {
-    const customerId = transaction.customerId;
-    const date = new Date(transaction.timestamp);
-    const month =
-      date.toLocaleString('default', { month: 'long' }) +
-      ' ' +
-      date.getFullYear();
-    const amount = transaction.amount;
-
-    if (!rewardsByCustomerAndMonth[customerId]) {
-      rewardsByCustomerAndMonth[customerId] = {};
-    }
-
-    if (!rewardsByCustomerAndMonth[customerId][month]) {
-      rewardsByCustomerAndMonth[customerId][month] = {
-        points: 0,
-        transactions: [],
-      };
-    }
-
-    rewardsByCustomerAndMonth[customerId][month].points +=
-      calculatePoints(amount);
-    rewardsByCustomerAndMonth[customerId][month].transactions.push(transaction);
-  });
-
-  return rewardsByCustomerAndMonth;
-};
+import { calculateRewards } from '../utils/caculateRewardsUtil';
 
 const CustomerRewards = ({ customerId }) => {
   const { data: transactions, loading: transactionsLoading } =
@@ -52,9 +22,9 @@ const CustomerRewards = ({ customerId }) => {
   }
 
   return (
-    <div>
+    <div data-testid={`rewards-container-${customerId}`}>
       {rewards[customerId] === undefined || rewards[customerId].length ? (
-        <div>
+        <div className='empy-data'>
           There is no data for your rewards since you don't have any
           transactions.
         </div>
