@@ -1,4 +1,4 @@
-// customerReward.test.js
+// src/components/__tests__/CustomerRewards.test.js
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import CustomerRewards from '../../components/CustomerRewards';
@@ -27,19 +27,58 @@ describe('CustomerRewards', () => {
     jest.clearAllMocks();
   });
 
+  test('should render loading state initially', () => {
+    render(<CustomerRewards customerId='1' />);
+    expect(screen.getByText('Loading...')).toBeInTheDocument();
+  });
+
+  test('should render customer not found message', async () => {
+    api.getCustomers.mockResolvedValueOnce([]);
+    render(<CustomerRewards customerId='1' />);
+    await waitFor(() => {
+      expect(screen.getByText('Customer not found')).toBeInTheDocument();
+    });
+  });
+
   test('should render customer rewards components', async () => {
     const customerId = '1';
-    // ARRANGE
     render(<CustomerRewards customerId={customerId} />);
 
-    // ACT & ASSERT
     const customerRewardsEle = await screen.findByTestId(
       `rewards-container-${customerId}`
     );
 
     expect(customerRewardsEle).toBeInTheDocument();
+  });
 
-    const valEl = customerRewardsEle.queryByRole('div', { name: 'empty-data' });
-    expect(valEl).not.toBeInTheDocument();
+  test('should render empty data message if no transactions', async () => {
+    api.getTransactions.mockResolvedValueOnce([]);
+    const customerId = '1';
+    render(<CustomerRewards customerId={customerId} />);
+
+    const customerRewardsEle = await screen.findByTestId(
+      `rewards-container-${customerId}`
+    );
+
+    expect(customerRewardsEle).toBeInTheDocument();
+    const valEl = screen.getByTestId(`empty-data-${customerId}`);
+    expect(valEl).toBeInTheDocument();
+    expect(valEl).toHaveTextContent(
+      "There is no data for your rewards since you don't have any transactions."
+    );
+  });
+
+  test('should render rewards for each month', async () => {
+    const customerId = '1';
+    render(<CustomerRewards customerId={customerId} />);
+
+    await waitFor(() => {
+      expect(screen.getByText(/May 2024/)).toBeInTheDocument();
+      expect(screen.getByText(/Total Points: 90/)).toBeInTheDocument();
+      expect(screen.getByText(/April 2024/)).toBeInTheDocument();
+      expect(screen.getByText(/Total Points: 35/)).toBeInTheDocument();
+      expect(screen.getByText(/March 2024/)).toBeInTheDocument();
+      expect(screen.getByText(/Total Points: 0/)).toBeInTheDocument();
+    });
   });
 });
