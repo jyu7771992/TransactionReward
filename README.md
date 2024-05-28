@@ -17,20 +17,16 @@ A React application to simulate a retailer's rewards program. Customers earn poi
 Clone the repository and install the dependencies:
 
 ```bash
-git clone https://github.com/yourusername/rewards-program-dashboard.git
-cd rewards-program-dashboard
+git clone https://github.com/jyu7771992/TransactionReward.git
+cd TransactionReward
 npm install
 ```
-
-## Set up json-server:
-
-npm install -g json-server
 
 # Usage
 
 ## Start the JSON server:
 
-json-server --watch db.json --port 3031
+npm run json-server
 
 ## Start the React application:
 
@@ -106,30 +102,6 @@ Ensure you have set up Jest properly by installing necessary packages:
 
 ```
 npm install --save-dev jest babel-jest @babel/preset-env @babel/preset-react react-test-renderer
-
-```
-
-# Jest Configuration
-
-Add the following to your package.json:
-
-```
-"jest": {
-  "moduleFileExtensions": ["js", "jsx"],
-  "transform": {
-    "^.+\\.jsx?$": "babel-jest"
-  },
-  "testEnvironment": "jsdom",
-  "setupFilesAfterEnv": ["<rootDir>/src/setupTests.js"]
-}
-```
-
-Create a babel.config.js file:
-
-```
-module.exports = {
-  presets: ['@babel/preset-env', '@babel/preset-react'],
-};
 
 ```
 

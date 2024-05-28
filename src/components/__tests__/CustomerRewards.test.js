@@ -39,11 +39,7 @@ describe('CustomerRewards', () => {
 
     expect(customerRewardsEle).toBeInTheDocument();
 
-    // const valEl = customerRewardsEle.querySelector('.empty-data');
-    // if (valEl !== null || valEl !== undefined) {
-    //   expect(valEl).toHaveTextContent(
-    //     "There is no data for your rewards since you don't have any transactions."
-    //   );
-    // }
+    const valEl = customerRewardsEle.queryByRole('div', { name: 'empty-data' });
+    expect(valEl).not.toBeInTheDocument();
   });
 });
