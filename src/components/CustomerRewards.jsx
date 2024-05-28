@@ -35,8 +35,16 @@ const CustomerRewards = ({ customerId }) => {
             className='group-month-container'
             data-testid={`group-container-${index}`}
           >
-            <h2 className='group-month-title'>{month}</h2>
-            <p className='group-month-total'>
+            <h2
+              className='group-month-title'
+              data-testid={`group-month-title-${index}`}
+            >
+              {month}
+            </h2>
+            <p
+              className='group-month-total'
+              data-testid={`group-month-total-${index}`}
+            >
               Total Points: {rewards[customerId][month].points}
             </p>
             <TransactionTable

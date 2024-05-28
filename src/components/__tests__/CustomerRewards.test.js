@@ -79,14 +79,19 @@ describe('CustomerRewards', () => {
       expect(mayTableEle).toBeInTheDocument();
       expect(aprilTableEle).toBeInTheDocument();
       expect(marchTableEle).toBeInTheDocument();
-      // const mayTitle = mayTableEle.getByRole('heading', { level: 2 });
-      // mayTitle.toHaveTextContent('May 2024');
-      // expect(mayTableEle.toHaveTextContent('May 2024'));s
-      // expect(screen.getByText(/Total Points: 90/)).toBeInTheDocument();
-      // expect(screen.getByText(/April 2024/)).toBeInTheDocument();
-      // expect(screen.getByText(/Total Points: 35/)).toBeInTheDocument();
-      // expect(screen.getByText(/March 2024/)).toBeInTheDocument();
-      // expect(screen.getByText(/Total Points: 0/)).toBeInTheDocument();
+      const mayTitle = screen.getByTestId(`group-month-title-0`);
+      const aprilTitle = screen.getByTestId(`group-month-title-1`);
+      const marchTitle = screen.getByTestId(`group-month-title-2`);
+      expect(mayTitle).toHaveTextContent('May 2024');
+      expect(aprilTitle).toHaveTextContent('April 2024');
+      expect(marchTitle).toHaveTextContent('March 2024');
+
+      const mayTotal = screen.getByTestId(`group-month-total-0`);
+      const aprilTotal = screen.getByTestId(`group-month-total-1`);
+      const marchTotal = screen.getByTestId(`group-month-total-2`);
+      expect(mayTotal).toHaveTextContent('Total Points: 90');
+      expect(aprilTotal).toHaveTextContent('Total Points: 35');
+      expect(marchTotal).toHaveTextContent('Total Points: 0');
     });
   });
 });
